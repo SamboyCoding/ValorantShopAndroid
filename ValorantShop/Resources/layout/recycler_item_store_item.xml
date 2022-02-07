@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/shop_item_image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        tools:layout_height="200dp"
+        tools:background="#faa"
+        android:contentDescription="Image of this skin" />
+
+    <TextView
+        android:id="@+id/shop_item_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Valorant Go! Volume 2 Phantom"
+        app:layout_constraintTop_toBottomOf="@id/shop_item_image"
+        app:layout_constraintStart_toStartOf="parent"
+        style="@style/TextAppearance.MaterialComponents.Headline6"
+        android:layout_marginStart="8dp"/>
+
+    <TextView
+        android:id="@+id/shop_item_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="1275 VP"
+        style="@style/TextAppearance.MaterialComponents.Body2"
+        app:layout_constraintTop_toBottomOf="@id/shop_item_name"
+        app:layout_constraintStart_toStartOf="@id/shop_item_name"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
