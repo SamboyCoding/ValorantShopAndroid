@@ -5,6 +5,7 @@ using System.IO;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using Android.Widget;
 using ValNet;
 using WebSocketSharp.Net;
 
@@ -32,10 +33,21 @@ public class RiotUserManager
         SaveCreds();
     }
 
-    public static async Task LoginFromSavedCredentials()
+    public static async Task<bool> LoginFromSavedCredentials()
     {
         PopulateCreds();
-        await CurrentUser.Authentication.AuthenticateWithCookies();
+        try
+        {
+            await CurrentUser.Authentication.AuthenticateWithCookies();
+            return true;
+        }
+        catch (Exception e)
+        {
+            Toast.MakeText(MainActivity.Instance, "Failed to authenticate with saved credentials. You may have been logged out due to not selecting \"remember me\".", ToastLength.Long).Show();
+            Console.WriteLine(e);
+            CurrentUser = new();
+            return false;
+        } 
     }
 
     private static void SaveCreds()
